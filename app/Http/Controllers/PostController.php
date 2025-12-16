@@ -14,10 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
-        dump($categories);
+        $categories = Category::get();  
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+     
         return view('dashboard', [
-            'categories' => $categories
+            'categories' => $categories,
+            'posts' => $posts
         ]);
     }
 
